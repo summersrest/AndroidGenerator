@@ -1,0 +1,48 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.sum.plugins.template</id>
+    <name>Android Generator</name>
+    <vendor>SummersRest</vendor>
+
+    <description><![CDATA[
+    <h2>Android代码生成插件，支持生成简单的Activity，Fragment代码，MVP模式的Activity，Fragment代码，带刷新的Activity,Fragment。提高效率，摆脱重复劳动。</h2>
+    <ul>
+        <li>Activity: Folder-> New -> Activity -> Mvp Activity</li>
+        <li>Activity: Folder-> New -> Activity -> Refresh Activity</li>
+        <li>Fragment: Folder-> New -> Fragment -> Mvp Fragment</li>
+        <li>Fragment: Folder-> New -> Fragment -> Refresh Fragment</li>
+        <li>GitHub：<a href="https://github.com/summersrest/AndroidGenerator</a></li>
+    </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+    <h1>0.0.1</h1>
+    <ul>
+        <li>Added the generators of the Activity/Fragment that can be refresh</li>
+    </ul>
+    <h1>0.0.2</h1>
+    <ul>
+        <li>Merge the generators of the Activity and normal Activity</li>
+        <li>Merge the generators of the Fragment and normal Fragment</li>
+    </ul>
+    ]]></change-notes>
+
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="org.jetbrains.plugins.template.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+    </applicationListeners>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="generator.PluginGeneratorProvider" />
+    </extensions>
+</idea-plugin>
